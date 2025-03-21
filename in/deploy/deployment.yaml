@@ -21,9 +21,8 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
   name: 'system:openshift:scc:privileged'
----
+---apiVersion: apps/v1
 kind: Deployment
-apiVersion: apps/v1
 metadata:
   name: conclient
   namespace: conclient
@@ -34,7 +33,6 @@ spec:
       app: conclient
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: conclient
     spec:
@@ -56,11 +54,19 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: Always
           securityContext:
-              privileged: true
+            privileged: false
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
+      securityContext:
+        seccompProfile:
+          type: RuntimeDefault
+        capabilities:
+          drop:
+            - ALL
   strategy:
     type: RollingUpdate
     rollingUpdate:
