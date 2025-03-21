@@ -17,6 +17,9 @@ This repository provides a method to establish a reverse SSH tunnel with an obfu
    - Optionally, use the provided `proxy.pac` file to redirect only specific traffic through the proxy. Update `proxy.pac` with the correct values for `myinternaldomain.com` and `myoutcontainerip`.
 
 ## Notes
+- It could take some time to create the connection and until the connection is not created the proxy won't work.
 - Ensure the external container remains accessible from the internal container.
-- Use a commonly allowed ports (80, 443, 8443, ...) to improve reliability in restrictive environments.
+- Use a commonly allowed ports (80, 443, 8443, ...) to improve reliability in restrictive environments. 
+- Some routers could have problems forwarding ports 80 or 443
+
 
