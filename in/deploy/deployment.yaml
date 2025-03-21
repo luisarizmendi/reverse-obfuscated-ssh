@@ -55,19 +55,11 @@ spec:
           terminationMessagePolicy: File
           imagePullPolicy: Always
           securityContext:
-            privileged: false
-            allowPrivilegeEscalation: false
-            runAsNonRoot: true
+              privileged: true
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
       schedulerName: default-scheduler
-      securityContext:
-        seccompProfile:
-          type: RuntimeDefault
-        capabilities:
-          drop:
-            - ALL
   strategy:
     type: RollingUpdate
     rollingUpdate:
@@ -75,3 +67,5 @@ spec:
       maxSurge: 25%
   revisionHistoryLimit: 10
   progressDeadlineSeconds: 600
+
+
