@@ -47,7 +47,7 @@ spec:
               protocol: TCP
           env:
             - name: OUT_HOST
-              value: 83.52.26.206
+              value: 83.52.26.26
             - name: OUT_PORT
               value: '8443'
           resources: {}
