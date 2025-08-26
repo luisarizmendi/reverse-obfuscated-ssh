@@ -23,7 +23,7 @@ This repository provides a method to establish a reverse SSH tunnel with an obfu
             `ssh -p 2223 root@<con-out host IP>`
       - You will login into the `con-out` container, from there you can jump into the `con-in` container running in the internal environment by SSH into `127.0.0.1` on port `9122` with `root` user and password `IN_PASS` (by default`R3dh4t1!`):
             `ssh -p 9122 root@127.0.0.1`
-      - At this point you will be on the `con-in` container running in the internal environment so you should be able to jump using SSH into any other host (that is not the host that is running the `con-in` since it is not a privileged container using the host network).
+      - At this point you will be on the `con-in` container running in the internal environment so you should be able to jump using SSH into any other host that is not the host that is running the `con-in`. If you want to be able to ssh to the host you will need to run the container with `--network=host` but that will require a privileged user.
 
 ## Notes
 - It could take some time to create the connection and until the connection is not created the proxy won't work.
