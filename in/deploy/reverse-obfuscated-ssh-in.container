@@ -1,0 +1,16 @@
+[Unit]
+Description=Reverse Obfuscated SSH Container - IN
+After=network.target
+
+[Container]
+Image=quay.io/luisarizmendi/con-in:latest
+ContainerName=reverse-obfuscated-ssh-in
+Environment=OUT_HOST=R3dh4t1!supersecure
+Environment=OUT_PORT=8443
+Environment=OUT_SSH_OBF_KEY=123qwersuper
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
